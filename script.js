@@ -1,12 +1,25 @@
-// cuando google verifica
+// cargar captcha correctamente
 
-function robotVerified(){
+window.onload = function(){
+
+grecaptcha.render('recaptcha', {
+
+'sitekey': '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
+
+'callback': function(){
+
+// pasar a siguiente pantalla
 
 document.getElementById("robotScreen").classList.add("hidden");
 
 document.getElementById("photoScreen").classList.remove("hidden");
 
 }
+
+});
+
+};
+
 
 // fotos
 
@@ -35,7 +48,7 @@ el.dataset.selected=false;
 
 el.onclick=()=>{
 
-el.dataset.selected=el.dataset.selected=="true"?"false":"true";
+el.dataset.selected = el.dataset.selected=="true" ? "false" : "true";
 
 el.classList.toggle("selected");
 
@@ -45,15 +58,20 @@ grid.appendChild(el);
 
 });
 
+
+// verificar fotos
+
 function verificar(){
 
 let ok=true;
 
 document.querySelectorAll("#grid img").forEach(img=>{
 
-if(img.dataset.correct=="true" && img.dataset.selected=="false") ok=false;
+if(img.dataset.correct=="true" && img.dataset.selected=="false")
+ok=false;
 
-if(img.dataset.correct=="false" && img.dataset.selected=="true") ok=false;
+if(img.dataset.correct=="false" && img.dataset.selected=="true")
+ok=false;
 
 });
 
