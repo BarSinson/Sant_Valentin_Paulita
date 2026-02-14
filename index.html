@@ -1,43 +1,46 @@
 <!DOCTYPE html>
 <html lang="ca">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Verificació</title>
+
 <link rel="stylesheet" href="styles.css">
+
+<!-- LIBRERÍA OFICIAL GOOGLE -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 </head>
 <body>
 
-<!-- pantalla inicial -->
+<!-- pantalla robot -->
 
 <div id="robotScreen" class="center">
 
-<div class="captcha-box">
+<div class="box">
 
-<div class="captcha-left">
-<input type="checkbox" id="checkbox">
-<span>No soc un robot</span>
-</div>
+<h2>Verificació de seguretat</h2>
 
-<div class="captcha-right">
-<img src="https://www.gstatic.com/recaptcha/api2/logo_48.png">
-<p>reCAPTCHA</p>
-<small>Privadesa - Condicions</small>
+<div class="g-recaptcha"
+data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+data-callback="robotVerified">
 </div>
 
 </div>
 
 </div>
 
-<!-- pantalla selecció fotos -->
+<!-- pantalla fotos -->
 
 <div id="photoScreen" class="hidden center">
 
-<div class="photo-box">
+<div class="box">
 
 <h2>Selecciona totes les imatges que contenen el teu nòvio</h2>
 
-<div class="grid" id="grid"></div>
+<div id="grid" class="grid"></div>
 
 <button onclick="verificar()">Verificar</button>
 
@@ -51,12 +54,14 @@
 
 <div id="finalScreen" class="hidden final">
 
-<h1>T'estimo ❤️</h1>
+<h1>T'estimo Paulita ❤️</h1>
 
-<p>Ets la millor persona del món</p>
+<p>Ets la millor cosa de la meva vida</p>
 
-<video autoplay loop muted>
-<source src="video/sorpresa.mp4" type="video/mp4">
+<video autoplay muted loop>
+
+<source src="video/sorpresa.mp4">
+
 </video>
 
 <div class="hearts"></div>
