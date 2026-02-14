@@ -1,14 +1,14 @@
-// checkbox inicial
+// cuando google verifica
 
-document.getElementById("checkbox").addEventListener("click", () => {
+function robotVerified(){
 
 document.getElementById("robotScreen").classList.add("hidden");
 
 document.getElementById("photoScreen").classList.remove("hidden");
 
-});
+}
 
-// imatges
+// fotos
 
 const images = [
 
@@ -17,59 +17,47 @@ const images = [
 {src:"images/novio2.jpg", correct:true},
 {src:"images/fake2.jpg", correct:false},
 {src:"images/novio3.jpg", correct:true},
-{src:"images/novio4.jpg", correct:true},
+{src:"images/novio4.jpg", correct:true}
 
 ];
 
-const grid = document.getElementById("grid");
+const grid=document.getElementById("grid");
 
 images.forEach(img=>{
 
-const element=document.createElement("img");
+const el=document.createElement("img");
 
-element.src=img.src;
+el.src=img.src;
 
-element.dataset.correct=img.correct;
+el.dataset.correct=img.correct;
 
-element.dataset.selected="false";
+el.dataset.selected=false;
 
-element.onclick=()=>{
+el.onclick=()=>{
 
-if(element.dataset.selected=="false"){
+el.dataset.selected=el.dataset.selected=="true"?"false":"true";
 
-element.dataset.selected="true";
-
-element.classList.add("selected");
-
-}else{
-
-element.dataset.selected="false";
-
-element.classList.remove("selected");
-
-}
+el.classList.toggle("selected");
 
 };
 
-grid.appendChild(element);
+grid.appendChild(el);
 
 });
 
 function verificar(){
 
-let correcto=true;
+let ok=true;
 
-document.querySelectorAll(".grid img").forEach(img=>{
+document.querySelectorAll("#grid img").forEach(img=>{
 
-if(img.dataset.correct=="true" && img.dataset.selected=="false")
-correcto=false;
+if(img.dataset.correct=="true" && img.dataset.selected=="false") ok=false;
 
-if(img.dataset.correct=="false" && img.dataset.selected=="true")
-correcto=false;
+if(img.dataset.correct=="false" && img.dataset.selected=="true") ok=false;
 
 });
 
-if(correcto){
+if(ok){
 
 document.getElementById("photoScreen").classList.add("hidden");
 
@@ -82,4 +70,3 @@ document.getElementById("error").innerText="Torna-ho a intentar ❤️";
 }
 
 }
-
