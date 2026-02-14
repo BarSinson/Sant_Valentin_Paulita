@@ -1,33 +1,69 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ca">
 <head>
 <meta charset="UTF-8">
-<title>Verificación</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verificació</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<div class="container">
+<!-- pantalla inicial -->
 
-<h1>Verificación de seguridad</h1>
-<p>Selecciona todas las imágenes que contengan a tu novio</p>
+<div id="robotScreen" class="center">
+
+<div class="captcha-box">
+
+<div class="captcha-left">
+<input type="checkbox" id="checkbox">
+<span>No soc un robot</span>
+</div>
+
+<div class="captcha-right">
+<img src="https://www.gstatic.com/recaptcha/api2/logo_48.png">
+<p>reCAPTCHA</p>
+<small>Privadesa - Condicions</small>
+</div>
+
+</div>
+
+</div>
+
+<!-- pantalla selecció fotos -->
+
+<div id="photoScreen" class="hidden center">
+
+<div class="photo-box">
+
+<h2>Selecciona totes les imatges que contenen el teu nòvio</h2>
 
 <div class="grid" id="grid"></div>
 
 <button onclick="verificar()">Verificar</button>
 
-<p id="mensaje"></p>
+<p id="error"></p>
 
 </div>
 
-<div id="sorpresa" class="hidden">
-<h1>Te amo ❤️</h1>
-<p>Eres lo mejor que me ha pasado</p>
-<div class="corazones"></div>
+</div>
+
+<!-- pantalla final -->
+
+<div id="finalScreen" class="hidden final">
+
+<h1>T'estimo ❤️</h1>
+
+<p>Ets la millor persona del món</p>
+
+<video autoplay loop muted>
+<source src="video/sorpresa.mp4" type="video/mp4">
+</video>
+
+<div class="hearts"></div>
+
 </div>
 
 <script src="script.js"></script>
 
 </body>
 </html>
-
