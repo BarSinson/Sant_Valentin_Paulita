@@ -1,55 +1,83 @@
-const imagenes = [
-{src:"images/tu1.jpg", correcto:true},
-{src:"images/fake1.jpg", correcto:false},
-{src:"images/tu2.jpg", correcto:true},
-{src:"images/fake2.jpg", correcto:false},
-{src:"images/tu3.jpg", correcto:true},
-{src:"images/tu4.jpg", correcto:true}
+// checkbox inicial
+
+document.getElementById("checkbox").addEventListener("click", () => {
+
+document.getElementById("robotScreen").classList.add("hidden");
+
+document.getElementById("photoScreen").classList.remove("hidden");
+
+});
+
+// imatges
+
+const images = [
+
+{src:"images/novio1.jpg", correct:true},
+{src:"images/fake1.jpg", correct:false},
+{src:"images/novio2.jpg", correct:true},
+{src:"images/fake2.jpg", correct:false},
+{src:"images/novio3.jpg", correct:true},
+{src:"images/novio4.jpg", correct:true},
+
 ];
 
 const grid = document.getElementById("grid");
 
-imagenes.forEach((img,index)=>{
-const elemento = document.createElement("img");
-elemento.src = img.src;
-elemento.dataset.correcto = img.correcto;
-elemento.dataset.selected = "false";
+images.forEach(img=>{
 
-elemento.onclick = ()=>{
-if(elemento.dataset.selected=="false"){
-elemento.dataset.selected="true";
-elemento.classList.add("selected");
+const element=document.createElement("img");
+
+element.src=img.src;
+
+element.dataset.correct=img.correct;
+
+element.dataset.selected="false";
+
+element.onclick=()=>{
+
+if(element.dataset.selected=="false"){
+
+element.dataset.selected="true";
+
+element.classList.add("selected");
+
 }else{
-elemento.dataset.selected="false";
-elemento.classList.remove("selected");
+
+element.dataset.selected="false";
+
+element.classList.remove("selected");
+
 }
+
 };
 
-grid.appendChild(elemento);
+grid.appendChild(element);
+
 });
 
 function verificar(){
 
-let correcto = true;
+let correcto=true;
 
 document.querySelectorAll(".grid img").forEach(img=>{
-if(img.dataset.correcto=="true" && img.dataset.selected=="false"){
+
+if(img.dataset.correct=="true" && img.dataset.selected=="false")
 correcto=false;
-}
-if(img.dataset.correcto=="false" && img.dataset.selected=="true"){
+
+if(img.dataset.correct=="false" && img.dataset.selected=="true")
 correcto=false;
-}
+
 });
 
 if(correcto){
 
-document.querySelector(".container").style.display="none";
+document.getElementById("photoScreen").classList.add("hidden");
 
-document.getElementById("sorpresa").classList.remove("hidden");
+document.getElementById("finalScreen").classList.remove("hidden");
 
 }else{
 
-document.getElementById("mensaje").innerText="Intenta otra vez ❤️";
+document.getElementById("error").innerText="Torna-ho a intentar ❤️";
 
 }
 
